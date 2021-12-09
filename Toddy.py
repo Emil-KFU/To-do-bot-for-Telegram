@@ -87,7 +87,7 @@ def remember(bot, update, args, job_queue, chat_data):
     if time == "":
         time = "08:00"
 
-    if dateparser(date) != -1 and timeparser(time) != -1:
+    if dateparser(date) != -1 and dateparser(date) != -2 and timeparser(time) != -1:
         conn = sqlite3.connect('todo.db')
         c = conn.cursor()
 
@@ -104,6 +104,8 @@ def remember(bot, update, args, job_queue, chat_data):
         set_timer(update, diff_in_sec, job_queue, chat_id, chat_data)
 
         update.message.reply_text("Понял! Не волнуйся, я запомню это для тебя 💪 \n")
+    elif dateparser(date) == -2:
+        update.message.reply_text("Извини, мы не можем вернуться в прошлое! \n")
     else:
         update.message.reply_text("❌ Эй, друг формат времени или даты неправильный \n"
                                   "Запомни, дата должна иметь вид : дд/мм/гггг \n"
@@ -191,7 +193,7 @@ def forget(bot, update, args, chat_data):
 
         if len(args) == 0:
             update.message.reply_text("Друг, пожалуйста, введи номер дела, которое хочешь удалить!"
-                                      "/forget <номер_дела>")
+                                      "/forget <код_дела>")
         else:
             conn = sqlite3.connect('todo.db')
             c = conn.cursor()

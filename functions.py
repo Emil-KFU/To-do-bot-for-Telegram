@@ -1,5 +1,7 @@
 import datetime
 
+present_date = datetime.date.today()
+
 def dateparser(datastr):
     if datastr == "":
         return ""
@@ -12,9 +14,12 @@ def dateparser(datastr):
                     day, month, year = datastr.split("-")
 
 
-                if int(day) < 31 and int(month) < 12 and int(year) < 3000:
+                if int(day) <= 31 and int(month) <= 12 and int(year) < 3000:
                     date = datetime.date(int(year), int(month), int(day))
-                    return date
+                    if date < present_date:
+                    	return -2
+                    else:
+                    	return date
                 else:
                     return -1
             else:
