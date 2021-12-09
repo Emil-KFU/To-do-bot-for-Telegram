@@ -385,7 +385,7 @@ def own(bot, update):
 
 def main():
 
-    updater = Updater("5070651489:AAFR7rtgBaSFmWXYPzqCOx-vjDK-iBPYMYk")
+    updater = Updater("5001896149:AAFfC-nwlxFUVGaqD_YsJkFPVC5-19zGAAg")
 
 
     dp = updater.dispatcher
