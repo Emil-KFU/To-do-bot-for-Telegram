@@ -11,7 +11,7 @@ def dateparser(datastr):
                 else:
                     day, month, year = datastr.split("-")
 
-                # print("day = %s, month = %s, year = %s" % (day, month, year))
+
                 if int(day) < 31 and int(month) < 12 and int(year) < 3000:
                     date = datetime.date(int(year), int(month), int(day))
                     return date
@@ -44,6 +44,6 @@ def timeparser(timestr):
 
 
 def timeDifferenceInSec(date1, date2):
-    """Calcolate the difference between 2 dates in second for the alarm."""
+
     return (date1 - date2).total_seconds()
 
